@@ -58,6 +58,8 @@ class Server {
 
         this.app.use('/register', register);
 
+        this.app.use('/get', register);
+
 
     }
 }
