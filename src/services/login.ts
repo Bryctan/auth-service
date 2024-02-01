@@ -1,9 +1,10 @@
-import connection from "../config/db-config";
+import { createConnection } from '../config/db-config';
 import comparePassword from "../helpers/compare-password";
 
 const loginCompany = (data: any, callback: any) => {
 
     const getCompanyQuery = 'call get_data_company(?);'
+    const connection = createConnection();
 
     try {
         connection.query(getCompanyQuery, [data.email_company], (error: any, results: any) => {
@@ -26,7 +27,7 @@ const loginCompany = (data: any, callback: any) => {
 const loginProvider = (data: any, callback: any) => {
 
     const getProviderQuery = 'call get_data_provider(?);'
-
+    const connection = createConnection();
     try {
         connection.query(getProviderQuery, [data.email_provider], (error: any, results: any) => {
             if (error) {
@@ -47,7 +48,7 @@ const loginProvider = (data: any, callback: any) => {
 const loginGrocer = (data: any, callback: any) => {
 
     const getGrocerQuery = 'call get_data_grocer(?);'
-
+    const connection = createConnection();
     try {
         connection.query(getGrocerQuery, [data.email_grocer], (error: any, results: any) => {
             if (error) {

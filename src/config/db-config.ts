@@ -1,15 +1,18 @@
 import mysql from 'mysql2';
 import dotenv from 'dotenv';
-// Configuramos dotenv 
+
 dotenv.config();
 
+const createConnection = () => {
+    return mysql.createConnection({
+        host: process.env.HOST,
+        user: process.env.USER,
+        password: process.env.PASSWORD,
+        database: process.env.DATABASE
+    });
+};
 
-const connection = mysql.createConnection({
-    host: process.env.HOST,
-    user: process.env.USER,
-    password: process.env.PASSWORD,
-    database: process.env.DATABASE
-});
+const connection = createConnection();
 
 connection.connect((error) => {
     if (error) {
@@ -19,4 +22,4 @@ connection.connect((error) => {
     }
 });
 
-export default connection;
+export { createConnection, connection };
