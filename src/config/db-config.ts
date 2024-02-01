@@ -1,18 +1,15 @@
-import mysql from 'mysql2';
+ import mysql from 'mysql2';
 import dotenv from 'dotenv';
-
+// Configuramos dotenv 
 dotenv.config();
 
-const createConnection = () => {
-    return mysql.createConnection({
-        host: process.env.HOST,
-        user: process.env.USER,
-        password: process.env.PASSWORD,
-        database: process.env.DATABASE
-    });
-};
-
-const connection = createConnection();
+/*
+const connection = mysql.createConnection({
+    host: process.env.HOST,
+    user: process.env.USER,
+    password: process.env.PASSWORD,
+    database: process.env.DATABASE
+});
 
 connection.connect((error) => {
     if (error) {
@@ -21,5 +18,16 @@ connection.connect((error) => {
         console.log(`Connection established with the database "${process.env.DATABASE}"`);
     }
 });
+*/
 
-export { createConnection, connection };
+const pool = mysql.createPool({
+    connectionLimit: 10, // ajusta según sea necesario
+    host: process.env.HOST,
+    user: process.env.USER,
+    password: process.env.PASSWORD,
+    database: process.env.DATABASE
+});
+
+export default pool;
+
+/* export default connection;*/

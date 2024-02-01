@@ -34,7 +34,7 @@ export const company = async (req: Request, res: Response) => {
         });
     }
 };
-
+/*
 export const provider = (req: Request, res: Response) => {
 
     try {
@@ -101,7 +101,7 @@ export const grocer = (req: Request, res: Response) => {
         });
     }
 };
-
+*/
 export const hello = (req:Request , res:Response) =>  {
     res.send("Hello titi")
 }

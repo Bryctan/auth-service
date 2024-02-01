@@ -1,9 +1,8 @@
-import { createConnection } from '../config/db-config';
+import connection from "../config/db-config";
 import bcrypt from "bcrypt";
 
 export const verifyGrocer = (emailGrocer: any, callback: any) => {
   const grocerExisting = "call getGrocerEmailExist(?,@message_text);";
-  const connection = createConnection();
   try {
     connection.query(
       grocerExisting,
@@ -22,7 +21,6 @@ export const verifyGrocer = (emailGrocer: any, callback: any) => {
 
 export const verifyCompany = (emailProvider: any, callback: any) => {
   const providerExisting = "call getCompany_EmailExist (?,@message_text);";
-  const connection = createConnection();
   try {
     connection.query(
       providerExisting,
@@ -45,7 +43,6 @@ export const updatePassword = async (
   password: any,
   callback: any
 ) => {
-  const connection = createConnection();
   const password_hash = await bcrypt.hash(password, 10);
 
   const data: { email: string; password: string }[] = [
