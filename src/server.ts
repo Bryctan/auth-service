@@ -46,7 +46,7 @@ class Server {
 
 
         // Cors
-        this.app.use(cors({ credentials: true, origin: '*' }));
+        this.app.use(cors({ credentials: true, origin:'https://proveerten-test.netlify.app'}));
     }
 
     routes() {
