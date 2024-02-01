@@ -68,7 +68,7 @@ export const provider = (req: Request, res: Response) => {
         });
     }
 };
-
+*/
 export const grocer = (req: Request, res: Response) => {
     try {
         let { email_grocer, password_grocer } = req.body;
@@ -101,7 +101,7 @@ export const grocer = (req: Request, res: Response) => {
         });
     }
 };
-*/
+
 export const hello = (req:Request , res:Response) =>  {
     res.send("Hello titi")
 }

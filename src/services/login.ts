@@ -94,8 +94,32 @@ const loginCompany = (data: any, callback: any) => {
     });
 };
 
+const loginGrocer = (data: any, callback: any) => {
+
+    pool.getConnection((err, connection) => {
+        if (err) {
+            return callback(err);
+        }
+
+    const getGrocerQuery = 'call get_data_grocer(?);'
+
+    
+        connection.query(getGrocerQuery, [data.email_grocer], (error: any, results: any) => {
+            connection.release();
+            if (error) {
+                return callback(error);
+            }
+            let idGrocer: string = results[0][0].document_grocer;
+            let storedPassword: string = results[0][0].password_grocer;
+            let role: string = results[0][0].fk_name_rol;
+            let verifiedPassword = comparePassword(data.password_grocer, storedPassword);
+            callback(null, verifiedPassword, idGrocer, role);
+        });
+    });
+}
+
 export default {
     loginCompany,
     //loginProvider,
-    //loginGrocer
+    loginGrocer
 }
