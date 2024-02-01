@@ -8,18 +8,16 @@ const loginCompany = (data: any, callback: any) => {
     try {
         connection.query(getCompanyQuery, [data.email_company], (error: any, results: any) => {
             if (error) {
-                connection.end();
                 return callback(error);
             }
             let idCompany: string = results[0][0].nit_company;
             let storedPassword: string = results[0][0].password_company;
             let role: string = results[0][0].fk_name_rol;
             let verifiedPassword = comparePassword(data.password_company, storedPassword);
-            callback(null, verifiedPassword, idCompany, role);
             connection.end();
+            callback(null, verifiedPassword, idCompany, role);
         });
     } catch (error) {
-        connection.end();
         return callback(error);
     }
     
@@ -38,8 +36,8 @@ const loginProvider = (data: any, callback: any) => {
             let storedPassword: string = results[0][0].password_provider;
             let role: string = results[0][0].fk_name_rol;
             let verifiedPassword = comparePassword(data.password_provider, storedPassword);
-            callback(null, verifiedPassword, idProvider, role);
             connection.end();
+            callback(null, verifiedPassword, idProvider, role);
         });
     } catch (error) {
         return callback(error);
@@ -59,8 +57,9 @@ const loginGrocer = (data: any, callback: any) => {
             let storedPassword: string = results[0][0].password_grocer;
             let role: string = results[0][0].fk_name_rol;
             let verifiedPassword = comparePassword(data.password_grocer, storedPassword);
-            callback(null, verifiedPassword, idGrocer, role);
             connection.end();
+            callback(null, verifiedPassword, idGrocer, role);
+        
         });
     } catch (error) {
         return callback(error);

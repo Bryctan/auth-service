@@ -12,14 +12,12 @@ const registerCompany = (data: Company, callback: any) => {
             data.foundation_company, data.description_company
         ], (error: any, results: any) => {
             if (error) {
-                connection.end();
                 return callback(error)
             }
-            callback(null, results)
             connection.end();
+            callback(null, results)
         })
     } catch (error) {
-        connection.end();
         return callback(error)
     }
 };
@@ -31,14 +29,12 @@ const registerProvider = (data: Provider, callback: any) => {
         data.email_provider, data.password_provider, data.profile_photo_provider, data.nit_company, data.city_provider,
         data.neighborhood, data.street, data.number_street, data.number_provider], (error: any, results: any) => {
             if (error) {
-                connection.end();
                 return callback(error)
             }
-            callback(null, results)
             connection.end();
+            callback(null, results)
         })
     } catch (error) {
-        connection.end();
         return callback(error)
     }
 }
@@ -50,15 +46,12 @@ const registerGrocer = (data: Grocer, callback: any) => {
         data.name_store, data.profile_photo_grocer, data.cover_photo_grocer, data.city_grocer, data.password_grocer, data.neighborhood,
         data.street, data.number_street, data.apartment, data.number_grocer], (error: any, results: any) => {
             if (error) {
-                connection.end();
                 return callback(error)
-                
             }
-            callback(null, results)
             connection.end();
+            callback(null, results)
         })
     } catch (error) {
-        connection.end();
         return callback(error)
     }
 };
