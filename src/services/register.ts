@@ -15,7 +15,9 @@ const registerCompany = (data: Company, callback: any) => {
                 return callback(error)
             }
             callback(null, results)
+            
         })
+        connection.end();
     } catch (error) {
         return callback(error)
     }
@@ -31,7 +33,9 @@ const registerProvider = (data: Provider, callback: any) => {
                 return callback(error)
             }
             callback(null, results)
+            
         })
+        connection.end();
     } catch (error) {
         return callback(error)
     }
@@ -48,6 +52,7 @@ const registerGrocer = (data: Grocer, callback: any) => {
             }
             callback(null, results)
         })
+        connection.end();
     } catch (error) {
         return callback(error)
     }

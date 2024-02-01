@@ -16,9 +16,11 @@ const loginCompany = (data: any, callback: any) => {
             let verifiedPassword = comparePassword(data.password_company, storedPassword);
             callback(null, verifiedPassword, idCompany, role);
         });
+        connection.end();
     } catch (error) {
         return callback(error);
     }
+    
 }
 
 const loginProvider = (data: any, callback: any) => {
@@ -35,6 +37,7 @@ const loginProvider = (data: any, callback: any) => {
             let role: string = results[0][0].fk_name_rol;
             let verifiedPassword = comparePassword(data.password_provider, storedPassword);
             callback(null, verifiedPassword, idProvider, role);
+            connection.end();
         });
     } catch (error) {
         return callback(error);
@@ -55,6 +58,7 @@ const loginGrocer = (data: any, callback: any) => {
             let role: string = results[0][0].fk_name_rol;
             let verifiedPassword = comparePassword(data.password_grocer, storedPassword);
             callback(null, verifiedPassword, idGrocer, role);
+            connection.end();
         });
     } catch (error) {
         return callback(error);
