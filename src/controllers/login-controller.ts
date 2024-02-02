@@ -34,7 +34,8 @@ export const company = async (req: Request, res: Response) => {
         });
     }
 };
-/*
+
+
 export const provider = (req: Request, res: Response) => {
 
     try {
@@ -68,7 +69,8 @@ export const provider = (req: Request, res: Response) => {
         });
     }
 };
-*/
+
+
 export const grocer = (req: Request, res: Response) => {
     try {
         let { email_grocer, password_grocer } = req.body;
