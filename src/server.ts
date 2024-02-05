@@ -46,7 +46,7 @@ class Server {
 
 
         // Cors
-        this.app.use(cors({ credentials: true, origin:'https://proveerten-test.netlify.app'}));
+        this.app.use(cors({ credentials: true, origin:'http://localhost:4200'}));
     }
 
     routes() {
@@ -58,7 +58,6 @@ class Server {
 
         this.app.use('/register', register);
 
-        this.app.use('/get', register);
 
 
     }

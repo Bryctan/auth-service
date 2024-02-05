@@ -19,7 +19,7 @@ export const company = async (req: Request, res: Response) => {
                     let secretKey: any = process.env.SECRET_KEY;
                     let token: any = generateToken(
                         { role: _role, email: email_company, id: id_company },
-                        secretKey, new Date().getTime() + (2 * 60 * 1000)
+                        secretKey, '30d'
                     )
                     return res.status(200).json({ status: 'Successful authentication', token: token });
                 } else {
@@ -54,7 +54,7 @@ export const provider = (req: Request, res: Response) => {
                     let secretKey: any = process.env.SECRET_KEY;
                     let token: any = generateToken(
                         { role: _role, email: email_provider, id: id_provider },
-                        secretKey, new Date().getTime() + (2 * 60 * 1000)
+                        secretKey, '30d'
                     )
                     return res.status(200).json({ status: 'Successful authentication', token: token });
                 } else {
@@ -88,7 +88,7 @@ export const grocer = (req: Request, res: Response) => {
                     let secretKey: any = process.env.SECRET_KEY;
                     let token: any = generateToken(
                         { role: _role, email: email_grocer, id: id_grocer },
-                        secretKey, new Date().getTime() + (2 * 60 * 1000)
+                        secretKey, '30d'
                     )
                     return res.status(200).json({ status: 'Successful authentication', token: token });
                 } else {
@@ -103,7 +103,3 @@ export const grocer = (req: Request, res: Response) => {
         });
     }
 };
-
-export const hello = (req:Request , res:Response) =>  {
-    res.send("Hello titi")
-}
